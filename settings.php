@@ -24,12 +24,6 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$settings->add(new admin_setting_heading(
-    'headerconfig',
-    get_string('headerconfig', 'block_yammer'),
-    get_string('descconfig', 'block_yammer')
-));
-
 $settings->add(new admin_setting_configtext(
     'yammer/scriptsource',
     get_string('scriptsource', 'block_yammer'),
