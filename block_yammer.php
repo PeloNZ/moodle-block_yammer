@@ -38,7 +38,6 @@ class block_yammer extends block_base {
     }
 
     function get_content() {
-        global $CFG, $OUTPUT;
 
         if ($this->content !== NULL) {
             return $this->content;
