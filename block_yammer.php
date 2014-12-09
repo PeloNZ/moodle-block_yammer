@@ -83,10 +83,9 @@ class block_yammer extends block_base {
         return false;
     }
 
-    function preferred_width() {
-        return 210;
+    function instance_allow_multiple() {
+        return true;
     }
-
 }
 
 
