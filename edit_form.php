@@ -39,7 +39,8 @@ class block_yammer_edit_form extends block_edit_form {
         $mform->addHelpButton('config_feedid', 'feedid', 'block_yammer');
         $mform->setType('config_feedid', PARAM_TEXT);
         // The yammer feed type.
-        $mform->addElement('text', 'config_feedtype', get_string('feedtype', 'block_yammer'));
+        $feedtypes = array(0 => 'my', 1 => 'group', 2 => 'topic', 3 => 'user', 4 => 'open-graph');
+        $mform->addElement('select', 'config_feedtype', get_string('feedtype', 'block_yammer'), $feedtypes);
         $mform->addHelpButton('config_feedtype', 'feedtype', 'block_yammer');
         $mform->setType('config_feedtype', PARAM_TEXT);
         // The yammer feed default group id.

@@ -59,7 +59,7 @@ class block_yammer extends block_base {
             'container' => '#embedded-feed',
             'network' => $this->config->network,
         );
-        if (!empty($this->config->feedtype)) {
+        if (!empty($this->config->feedtype) && $this->config->feedtype !== 'my') { // The "my" feed doesn't use the feedType parameter.
             $params['feedType'] = $this->config->feedtype;
         }
         if (!empty($this->config->feedid)) {
