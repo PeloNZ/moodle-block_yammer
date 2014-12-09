@@ -38,9 +38,9 @@ class block_yammer_edit_form extends block_edit_form {
         $mform->addElement('text', 'config_feedid', get_string('feedid', 'block_yammer'));
         $mform->addHelpButton('config_feedid', 'feedid', 'block_yammer');
         $mform->addRule('config_feedid', get_string('err_numeric', 'form'), 'numeric', '', 'client');
-        $mform->setType('config_feedid', PARAM_INT);
+        $mform->setType('config_feedid', PARAM_TEXT);
         // The yammer feed type.
-        $feedtypes = array(0 => 'my', 1 => 'group', 2 => 'topic', 3 => 'user', 4 => 'open-graph');
+        $feedtypes = array('my' => 'my', 'group' => 'group', 'topic' => 'topic', 'user' => 'user', 'open-graph' => 'open-graph');
         $mform->addElement('select', 'config_feedtype', get_string('feedtype', 'block_yammer'), $feedtypes);
         $mform->addHelpButton('config_feedtype', 'feedtype', 'block_yammer');
         $mform->setType('config_feedtype', PARAM_TEXT);
@@ -48,7 +48,7 @@ class block_yammer_edit_form extends block_edit_form {
         $mform->addElement('text', 'config_defaultgroupid', get_string('defaultgroupid', 'block_yammer'));
         $mform->addHelpButton('config_defaultgroupid', 'defaultgroupid', 'block_yammer');
         $mform->addRule('config_defaultgroupid', get_string('err_numeric', 'form'), 'numeric', '', 'client');
-        $mform->setType('config_defaultgroupid', PARAM_INT);
+        $mform->setType('config_defaultgroupid', PARAM_TEXT);
         // The opengraph parameters
         // opengraph url
         $mform->addElement('text', 'config_ogurl', get_string('ogurl', 'block_yammer'));
@@ -65,7 +65,7 @@ class block_yammer_edit_form extends block_edit_form {
         $errors = array();
 
         // If open-graph is the selected feed type, a url is required
-        if (($data['config_feedtype'] === '4') && (empty($data['config_ogurl']))) {
+        if (($data['config_feedtype'] === 'open-graph') && (empty($data['config_ogurl']))) {
             $errors['config_ogurl'] = get_string('err_required', 'form');
         }
 
