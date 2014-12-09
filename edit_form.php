@@ -49,9 +49,26 @@ class block_yammer_edit_form extends block_edit_form {
         $mform->addHelpButton('config_defaultgroupid', 'defaultgroupid', 'block_yammer');
         $mform->addRule('config_defaultgroupid', get_string('err_numeric', 'form'), 'numeric', '', 'client');
         $mform->setType('config_defaultgroupid', PARAM_INT);
+        // The opengraph parameters
+        // opengraph url
+        $mform->addElement('text', 'config_ogurl', get_string('ogurl', 'block_yammer'));
+        $mform->addHelpButton('config_ogurl', 'ogurl', 'block_yammer');
+        $mform->disabledIf('config_ogurl', 'config_feedtype', 'neq', 4);
+        $mform->setType('config_ogurl', PARAM_URL);
         // Where to get the parameters from.
         $mform->addElement('static', 'description', '', get_string('config_help', 'block_yammer'));
         // Clean form inputs.
         $mform->applyFilter('__ALL__', 'trim');
+    }
+
+    public function validation($data, $files) {
+        $errors = array();
+
+        // If open-graph is the selected feed type, a url is required
+        if (($data['config_feedtype'] === '4') && (empty($data['config_ogurl']))) {
+            $errors['config_ogurl'] = get_string('err_required', 'form');
+        }
+
+        return $errors;
     }
 }

@@ -68,6 +68,9 @@ class block_yammer extends block_base {
         if (!empty($this->config->defaultgroupid)) {
             $params['config'] = array('defaultGroupId' => $this->config->defaultgroupid);
         }
+        if (!empty($this->config->ogurl)) {
+            $params['objectProperties'] = array('url' => $this->config->ogurl, 'type' => 'page');
+        }
 
         $this->content = new stdClass();
         $this->content->text = html_writer::tag("script", '', array('type' => "text/javascript", 'src' => $this->config->scriptsource));

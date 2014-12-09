@@ -37,6 +37,8 @@ $string['feedtype'] = 'Feed Type';
 $string['feedtype_help'] = 'The type of feed to display. This can be <em>group</em>, <em>topic</em>, <em>user</em>, or <em>opengraph</em>.';
 $string['network'] = 'Network permalink';
 $string['network_help'] = 'This is the name of your Network, e.g. yammer.com/<strong>my-company-name.net</strong>.';
+$string['ogurl'] = 'Open Graph URL';
+$string['ogurl_help'] = 'If the feed type is <em>open-graph</em>, the feed URL must be specified.';
 
 // Global settings
 $string['scriptsource'] = 'Script source';
