@@ -32,12 +32,13 @@ class block_yammer_edit_form extends block_edit_form {
         // The yammer network permalink.
         $mform->addElement('text', 'config_network', get_string('network', 'block_yammer'));
         $mform->addHelpButton('config_network', 'network', 'block_yammer');
-        $mform->addRule('config_network', get_string('required'), 'required', '', 'client');
+        $mform->addRule('config_network', get_string('err_required', 'form'), 'required', '', 'client');
         $mform->setType('config_network', PARAM_TEXT);
         // The yammer feed id.
         $mform->addElement('text', 'config_feedid', get_string('feedid', 'block_yammer'));
         $mform->addHelpButton('config_feedid', 'feedid', 'block_yammer');
-        $mform->setType('config_feedid', PARAM_TEXT);
+        $mform->addRule('config_feedid', get_string('err_numeric', 'form'), 'numeric', '', 'client');
+        $mform->setType('config_feedid', PARAM_INT);
         // The yammer feed type.
         $feedtypes = array(0 => 'my', 1 => 'group', 2 => 'topic', 3 => 'user', 4 => 'open-graph');
         $mform->addElement('select', 'config_feedtype', get_string('feedtype', 'block_yammer'), $feedtypes);
@@ -46,8 +47,11 @@ class block_yammer_edit_form extends block_edit_form {
         // The yammer feed default group id.
         $mform->addElement('text', 'config_defaultgroupid', get_string('defaultgroupid', 'block_yammer'));
         $mform->addHelpButton('config_defaultgroupid', 'defaultgroupid', 'block_yammer');
-        $mform->setType('config_defaultgroupid', PARAM_TEXT);
+        $mform->addRule('config_defaultgroupid', get_string('err_numeric', 'form'), 'numeric', '', 'client');
+        $mform->setType('config_defaultgroupid', PARAM_INT);
         // Where to get the parameters from.
         $mform->addElement('static', 'description', '', get_string('config_help', 'block_yammer'));
+        // Clean form inputs.
+        $mform->applyFilter('__ALL__', 'trim');
     }
 }
