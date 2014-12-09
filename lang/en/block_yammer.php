@@ -18,8 +18,8 @@
  * Strings for component 'block_yammer'
  *
  * @package   block_yammer
- * @copyright  2014 Catalyst EU
- * @author     Chris Wharton <chris.wharton@catalyst-eu.net>
+ * @copyright 2014 Catalyst EU
+ * @author    Chris Wharton <chris.wharton@catalyst-eu.net>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -30,13 +30,14 @@ $string['pluginname'] = 'Yammer';
 // Instance settings
 $string['config_help'] = 'To retrieve the feed ID and network permalink, please navigate to the feed in the Yammer web application and copy it from the URL.';
 $string['defaultgroupid'] = 'Default Group ID';
-$string['defaultgroupid_help'] = 'The default group ID to display.';
+$string['defaultgroupid_help'] = 'The default group ID to post to.';
 $string['feedid'] = 'Feed ID';
-$string['feedid_help'] = 'The specific feed ID to display.';
+$string['feedid_help'] = 'The feed ID to display.';
 $string['feedtype'] = 'Feed Type';
-$string['feedtype_help'] = 'The type of feed to display. This can be <em>group</em>, <em>topic</em>, <em>user</em>, or <em>opengraph</em>.';
+$string['feedtype_help'] = 'The type of feed to display. This can be <em>group</em>, <em>topic</em>, <em>user</em>, or <em>open-graph</em>.';
 $string['network'] = 'Network permalink';
 $string['network_help'] = 'This is the name of your Network, e.g. yammer.com/<strong>my-company-name.net</strong>.';
+$string['notconfigured'] = 'This block instance has not been configured';
 $string['ogurl'] = 'Open Graph URL';
 $string['ogurl_help'] = 'If the feed type is <em>open-graph</em>, the feed URL must be specified.';
 
