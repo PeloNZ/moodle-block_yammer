@@ -54,7 +54,7 @@ class block_yammer_edit_form extends block_edit_form {
         // opengraph url
         $mform->addElement('text', 'config_ogurl', get_string('ogurl', 'block_yammer'));
         $mform->addHelpButton('config_ogurl', 'ogurl', 'block_yammer');
-        $mform->disabledIf('config_ogurl', 'config_feedtype', 'neq', 4);
+        $mform->disabledIf('config_ogurl', 'config_feedtype', 'neq', 'open-graph');
         $mform->setType('config_ogurl', PARAM_URL);
         // Where to get the parameters from.
         $mform->addElement('static', 'description', '', get_string('config_help', 'block_yammer'));
