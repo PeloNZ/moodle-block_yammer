@@ -72,8 +72,8 @@ class block_yammer extends block_base {
         }
 
         $this->content = new stdClass();
-        $this->content->text = html_writer::tag('script', '', array('type' => 'text/javascript', 'src' => $this->config->scriptsource));
-        $this->content->text.= html_writer::tag('div', '', array('id' => 'embedded-feed'));
+        $this->content->text = html_writer::tag('div', '', array('id' => 'embedded-feed'));
+        $this->content->text.= html_writer::tag('script', '', array('type' => 'text/javascript', 'src' => $this->config->scriptsource));
         $this->content->text.= html_writer::tag('script', 'yam.connect.embedFeed(' . json_encode($params) . ');');
 
         return $this->content;
