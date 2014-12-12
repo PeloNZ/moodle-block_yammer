@@ -48,6 +48,7 @@ class block_yammer_edit_form extends block_edit_form {
         $mform->addElement('text', 'config_defaultgroupid', get_string('defaultgroupid', 'block_yammer'));
         $mform->addHelpButton('config_defaultgroupid', 'defaultgroupid', 'block_yammer');
         $mform->addRule('config_defaultgroupid', get_string('err_numeric', 'form'), 'numeric', '', 'client');
+        $mform->disabledIf('config_defaultgroupid', 'config_feedtype', 'neq', 'group');
         $mform->setType('config_defaultgroupid', PARAM_TEXT);
         // The opengraph parameters
         // opengraph url
