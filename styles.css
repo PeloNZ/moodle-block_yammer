@@ -1,3 +1,7 @@
 #embedded-feed {
     height: 500px;
 }
+
+#embedded-feed .videoWrapper {
+    height: 100%;
+}
