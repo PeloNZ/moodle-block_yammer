@@ -57,6 +57,7 @@ class block_yammer extends block_base {
         $params = array(
             'container' => '#embedded-feed',
             'network' => $this->config->network,
+            'config' => array(),
         );
         if (!empty($this->config->feedtype) && $this->config->feedtype !== 'my') { // The "my" feed doesn't use the feedType parameter.
             $params['feedType'] = $this->config->feedtype;
@@ -64,11 +65,28 @@ class block_yammer extends block_base {
         if (!empty($this->config->feedid)) {
             $params['feedId'] = $this->config->feedid;
         }
-        if (!empty($this->config->defaultgroupid)) {
-            $params['config'] = array('defaultGroupId' => $this->config->defaultgroupid);
-        }
         if (!empty($this->config->ogurl)) {
             $params['objectProperties'] = array('url' => $this->config->ogurl, 'type' => 'page');
+            if (!empty($this->config->hideogpreview)) {
+                $params['config']['showOpenGraphPreview'] = 'false';
+            } else {
+                $params['config']['showOpenGraphPreview'] = 'true';
+            }
+        }
+        if (!empty($this->config->defaultgroupid)) {
+            $params['config']['defaultGroupId'] = $this->config->defaultgroupid;
+        }
+        if (!empty($this->config->usesso)) {
+            $params['config']['use_sso'] = 'true';
+        }
+        if (!empty($this->config->hideheader)) {
+            $params['config']['header'] = 'false';
+        }
+        if (!empty($this->config->hidefooter)) {
+            $params['config']['footer'] = 'false';
+        }
+        if (!empty($this->config->prompttext)) {
+            $params['config']['promptText'] = $this->config->prompttext;
         }
 
         $this->content = new stdClass();
