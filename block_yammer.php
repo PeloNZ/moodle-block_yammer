@@ -86,6 +86,13 @@ class block_yammer extends block_base {
     function instance_allow_multiple() {
         return true;
     }
-}
 
+    public function specialization() {
+        if (!empty($this->config->title)) {
+            $this->title = $this->config->title;
+        } else {
+            $this->config->title = get_string('pluginname', 'block_yammer');
+        }
+    }
+}
 

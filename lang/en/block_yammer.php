@@ -28,18 +28,20 @@ $string['yammer:addinstance'] = 'Add a new Yammer block';
 $string['pluginname'] = 'Yammer';
 
 // Instance settings
-$string['config_help'] = 'To retrieve the feed ID and network permalink, please navigate to the feed in the Yammer web application and copy it from the URL.';
+$string['blocktitle'] = 'Block title';
+$string['config_help'] = 'To retrieve the feed ID and network permalink, please navigate to the feed in the <a href="https://www.yammer.com" target="_blank">Yammer web application</a> and copy it from the URL.';
 $string['defaultgroupid'] = 'Default Group ID';
 $string['defaultgroupid_help'] = 'The default group ID to post to.';
 $string['feedid'] = 'Feed ID';
 $string['feedid_help'] = 'The feed ID to display.';
 $string['feedtype'] = 'Feed Type';
-$string['feedtype_help'] = 'The type of feed to display. This can be <em>group</em>, <em>topic</em>, <em>user</em>, or <em>open-graph</em>.';
+$string['feedtype_help'] = 'The type of feed to display. This can be <em>my</em>, <em>group</em>, <em>topic</em>, <em>user</em>, or <em>open-graph</em>.';
 $string['network'] = 'Network permalink';
 $string['network_help'] = 'This is the name of your Network, e.g. yammer.com/<strong>my-company-name.net</strong>.';
 $string['notconfigured'] = 'This block instance has not been configured';
 $string['ogurl'] = 'Open Graph URL';
 $string['ogurl_help'] = 'If the feed type is <em>open-graph</em>, the feed URL must be specified.';
+$string['yammersettings'] = 'Yammer network settings';
 
 // Global settings
 $string['scriptsource'] = 'Script source';

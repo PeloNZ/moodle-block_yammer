@@ -29,6 +29,12 @@ class block_yammer_edit_form extends block_edit_form {
 
         // Section header title according to language file.
         $mform->addElement('header', 'configheader', get_string('blocksettings', 'block'));
+        // The block title
+        $mform->addElement('text', 'config_title', get_string('blocktitle', 'block_yammer'));
+        $mform->setDefault('config_title', get_string('pluginname', 'block_yammer'));
+        $mform->setType('config_title', PARAM_TEXT);
+        // Yammer config header
+        $mform->addElement('header', 'config_yammer', get_string('yammersettings', 'block_yammer'));
         // The yammer network permalink.
         $mform->addElement('text', 'config_network', get_string('network', 'block_yammer'));
         $mform->addHelpButton('config_network', 'network', 'block_yammer');
