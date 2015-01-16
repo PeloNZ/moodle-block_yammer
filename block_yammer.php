@@ -109,7 +109,7 @@ class block_yammer extends block_base {
         if (!empty($this->config->title)) {
             $this->title = $this->config->title;
         } else {
-            $this->config->title = get_string('pluginname', 'block_yammer');
+            $this->title = get_string('pluginname', 'block_yammer');
         }
     }
 }
