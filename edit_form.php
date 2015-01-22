@@ -32,7 +32,7 @@ class block_yammer_edit_form extends block_edit_form {
         // The block title
         $mform->addElement('text', 'config_title', get_string('blocktitle', 'block_yammer'));
         $mform->setDefault('config_title', get_string('pluginname', 'block_yammer'));
-        $mform->setType('config_title', PARAM_TEXT);
+        $mform->setType('config_title', PARAM_MULTILANG);
 
         // Yammer config header
         $mform->addElement('header', 'config_yammer', get_string('yammer_settings', 'block_yammer'));
