@@ -27,7 +27,7 @@ $string['yammer'] = 'Yammer';
 $string['yammer:addinstance'] = 'Add a new Yammer block';
 $string['pluginname'] = 'Yammer';
 
-// Instance settings
+// Instance settings.
 $string['blocktitle'] = 'Block title';
 $string['config_help'] = 'You can display My Feed, a Group Feed, a Topic Feed, a User Feed or an OG object feed. Users will need to log in to view the feed.  Additionally, the feed is restricted to users of the network specified.</br>To retrieve the feed ID and network permalink, please navigate to the feed in the <a href="https://www.yammer.com" target="_blank">Yammer web application</a> and copy it from the URL.</br>Detailed documentation for the embedded feed specifcation is available <a href="https://developer.yammer.com/connect/" target="_blank">here</a>.';
 $string['defaultgroupid'] = 'Default Group ID';
@@ -56,7 +56,7 @@ $string['prompttext'] = 'Prompt Text';
 $string['prompttext_help'] = 'You can encourage your users to post more by providing custom publisher watermark text.';
 $string['yammer_settings'] = 'Yammer network settings';
 
-// Global settings
+// Global settings.
 $string['scriptsource'] = 'Script source';
 $string['scriptsource_desc'] = 'The location of the Yammer embed script. This should be left as default.';
 

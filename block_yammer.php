@@ -25,21 +25,21 @@
  */
 
 class block_yammer extends block_base {
-    function init() {
+    public function init() {
         $this->title = get_string('pluginname', 'block_yammer');
     }
 
-    function applicable_formats() {
+    public function applicable_formats() {
         return array('course-view' => true);
     }
 
-    function has_config() { // global config settings.php
+    public function has_config() {
         return true;
     }
 
-    function get_content() {
+    public function get_content() {
 
-        if ($this->content !== NULL) {
+        if ($this->content !== null) {
             return $this->content;
         }
 
@@ -59,7 +59,8 @@ class block_yammer extends block_base {
             'network' => $this->config->network,
             'config' => array(),
         );
-        if (!empty($this->config->feedtype) && $this->config->feedtype !== 'my') { // The "my" feed doesn't use the feedType parameter.
+        if (!empty($this->config->feedtype) && $this->config->feedtype !== 'my') {
+            // The "my" feed doesn't use the feedType parameter.
             $params['feedType'] = $this->config->feedtype;
         }
         if (!empty($this->config->feedid)) {
@@ -90,17 +91,18 @@ class block_yammer extends block_base {
         }
 
         $this->content->text = html_writer::tag('div', '', array('id' => 'embedded-feed'));
-        $this->content->text.= html_writer::tag('script', '', array('type' => 'text/javascript', 'src' => $this->config->scriptsource));
-        $this->content->text.= html_writer::tag('script', 'yam.connect.embedFeed(' . json_encode($params) . ');');
+        $this->content->text .= html_writer::tag('script', '',
+            array('type' => 'text/javascript', 'src' => $this->config->scriptsource));
+        $this->content->text .= html_writer::tag('script', 'yam.connect.embedFeed(' . json_encode($params) . ');');
 
         return $this->content;
     }
 
-    function hide_header() {
+    public function hide_header() {
         return false;
     }
 
-    function instance_allow_multiple() {
+    public function instance_allow_multiple() {
         return true;
     }
 
