@@ -107,10 +107,18 @@ class block_yammer extends block_base {
     }
 
     public function specialization() {
+        // Set the block title.
         if (!empty($this->config->title)) {
             $this->title = $this->config->title;
         } else {
             $this->title = get_string('pluginname', 'block_yammer');
+        }
+        // Set the default yammer network.
+        if (empty($this->config->network)) {
+            if (!isset($this->config)) {
+                $this->config = new stdClass();
+            }
+            $this->config->network = get_config('yammer', 'defaultnetwork');
         }
     }
 }

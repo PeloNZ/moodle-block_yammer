@@ -59,4 +59,5 @@ $string['yammer_settings'] = 'Yammer network settings';
 // Global settings.
 $string['scriptsource'] = 'Script source';
 $string['scriptsource_desc'] = 'The location of the Yammer embed script. This should be left as default.';
-
+$string['defaultnetwork'] = 'Default network';
+$string['defaultnetwork_desc'] = 'The default Yammer network for this site. This is usually your company email domain, e.g. username@<strong>companyname.com</strong>. All new Yammer block instances will use this by default.';

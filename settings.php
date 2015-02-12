@@ -24,10 +24,23 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$settings->add(new admin_setting_configtext(
-    'yammer/scriptsource',
-    get_string('scriptsource', 'block_yammer'),
-    get_string('scriptsource_desc', 'block_yammer'),
-    'https://assets.yammer.com/assets/platform_embed.js',
-    PARAM_URL
-));
+defined('MOODLE_INTERNAL') || die();
+
+if ($ADMIN->fulltree) {
+    // The remote location of the Yammer embed javascript.
+    $settings->add(new admin_setting_configtext(
+        'yammer/scriptsource',
+        get_string('scriptsource', 'block_yammer'),
+        get_string('scriptsource_desc', 'block_yammer'),
+        'https://assets.yammer.com/assets/platform_embed.js',
+        PARAM_URL
+    ));
+    // The default yammer network for new block instances.
+    $settings->add(new admin_setting_configtext(
+        'yammer/defaultnetwork',
+        get_string('defaultnetwork', 'block_yammer'),
+        get_string('defaultnetwork_desc', 'block_yammer'),
+        '',
+        PARAM_TEXT
+    ));
+}
