@@ -103,7 +103,7 @@ class block_yammer extends block_base {
     }
 
     public function instance_allow_multiple() {
-        return true;
+        return false;
     }
 
     public function specialization() {

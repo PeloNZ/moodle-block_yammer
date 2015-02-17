@@ -64,7 +64,7 @@ class block_yammer_edit_form extends block_edit_form {
         $mform->disabledIf('config_ogurl', 'config_feedtype', 'neq', 'open-graph');
         $mform->setType('config_ogurl', PARAM_URL);
         // Enable single sign on (SSO).
-        $mform->addElement('checkbox', 'config_usesso', get_string('usesso', 'block_yammer'),
+        $mform->addElement('advcheckbox', 'config_usesso', get_string('usesso', 'block_yammer'),
             get_string('usesso_desc', 'block_yammer'));
         $mform->addHelpButton('config_usesso', 'usesso', 'block_yammer');
         $mform->setType('config_usesso', PARAM_BOOL);
@@ -78,15 +78,15 @@ class block_yammer_edit_form extends block_edit_form {
         $mform->addHelpButton('config_prompttext', 'prompttext', 'block_yammer');
         $mform->setType('config_prompttext', PARAM_TEXT);
         // Show or hide header.
-        $mform->addElement('checkbox', 'config_hideheader', get_string('hideheader', 'block_yammer'),
+        $mform->addElement('advcheckbox', 'config_hideheader', get_string('hideheader', 'block_yammer'),
             get_string('hideheader_desc', 'block_yammer'));
         $mform->setType('config_hideheader', PARAM_BOOL);
         // Show or hide footer.
-        $mform->addElement('checkbox', 'config_hidefooter', get_string('hidefooter', 'block_yammer'),
+        $mform->addElement('advcheckbox', 'config_hidefooter', get_string('hidefooter', 'block_yammer'),
             get_string('hidefooter_desc', 'block_yammer'));
         $mform->setType('config_hidefooter', PARAM_BOOL);
         // Show or hide open graph preview.
-        $mform->addElement('checkbox', 'config_hideogpreview', get_string('hideogpreview', 'block_yammer'),
+        $mform->addElement('advcheckbox', 'config_hideogpreview', get_string('hideogpreview', 'block_yammer'),
             get_string('hideogpreview_desc', 'block_yammer'));
         $mform->addHelpButton('config_hideogpreview', 'hideogpreview', 'block_yammer');
         $mform->disabledIf('config_hideogpreview', 'config_feedtype', 'neq', 'open-graph');
