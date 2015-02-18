@@ -34,35 +34,40 @@ class block_yammer_edit_form extends block_edit_form {
         $mform->setDefault('config_title', get_string('pluginname', 'block_yammer'));
         $mform->setType('config_title', PARAM_TEXT);
 
-        // Yammer config header.
+        // Yammer network settings.
         $mform->addElement('header', 'config_yammer', get_string('yammer_settings', 'block_yammer'));
         // The yammer network permalink.
         $mform->addElement('text', 'config_network', get_string('network', 'block_yammer'));
         $mform->addHelpButton('config_network', 'network', 'block_yammer');
         $mform->addRule('config_network', get_string('err_required', 'form'), 'required', '', 'client');
         $mform->setType('config_network', PARAM_TEXT);
+        // The yammer feed type.
+        $feedtypes = array(
+            'my' => 'my',
+            'group' => 'group',
+            'user' => 'user',
+            'topic' => 'topic',
+            'open-graph' => 'open-graph'
+        );
+        $mform->addElement('select', 'config_feedtype', get_string('feedtype', 'block_yammer'), $feedtypes);
+        $mform->addHelpButton('config_feedtype', 'feedtype', 'block_yammer');
+        $mform->setType('config_feedtype', PARAM_TEXT);
         // The yammer feed id.
         $mform->addElement('text', 'config_feedid', get_string('feedid', 'block_yammer'));
         $mform->addHelpButton('config_feedid', 'feedid', 'block_yammer');
         $mform->addRule('config_feedid', get_string('err_numeric', 'form'), 'numeric', '', 'client');
         $mform->setType('config_feedid', PARAM_TEXT);
-        // The yammer feed type.
-        $feedtypes = array('my' => 'my', 'group' => 'group', 'topic' => 'topic', 'user' => 'user', 'open-graph' => 'open-graph');
-        $mform->addElement('select', 'config_feedtype', get_string('feedtype', 'block_yammer'), $feedtypes);
-        $mform->addHelpButton('config_feedtype', 'feedtype', 'block_yammer');
-        $mform->setType('config_feedtype', PARAM_TEXT);
         // The yammer feed default group id.
         $mform->addElement('text', 'config_defaultgroupid', get_string('defaultgroupid', 'block_yammer'));
         $mform->addHelpButton('config_defaultgroupid', 'defaultgroupid', 'block_yammer');
         $mform->addRule('config_defaultgroupid', get_string('err_numeric', 'form'), 'numeric', '', 'client');
         $mform->disabledIf('config_defaultgroupid', 'config_feedtype', 'neq', 'group');
         $mform->setType('config_defaultgroupid', PARAM_TEXT);
-        // The opengraph parameters.
-        // opengraph url.
-        $mform->addElement('text', 'config_ogurl', get_string('ogurl', 'block_yammer'));
-        $mform->addHelpButton('config_ogurl', 'ogurl', 'block_yammer');
-        $mform->disabledIf('config_ogurl', 'config_feedtype', 'neq', 'open-graph');
-        $mform->setType('config_ogurl', PARAM_URL);
+        // Default to canonical network
+        $mform->addElement('advcheckbox', 'config_defaulttocanonical', get_string('defaulttocanonical', 'block_yammer'),
+            get_string('defaulttocanonical_desc', 'block_yammer'));
+        $mform->addHelpButton('config_defaulttocanonical', 'defaulttocanonical', 'block_yammer');
+        $mform->setType('config_defaulttocanonical', PARAM_BOOL);
         // Enable single sign on (SSO).
         $mform->addElement('advcheckbox', 'config_usesso', get_string('usesso', 'block_yammer'),
             get_string('usesso_desc', 'block_yammer'));
@@ -71,7 +76,41 @@ class block_yammer_edit_form extends block_edit_form {
         // Where to get the parameters from.
         $mform->addElement('static', 'description', '', get_string('config_help', 'block_yammer'));
 
-        // Feed display control.
+        // Open graph settings.
+        $mform->addElement('header', 'config_opengraph', get_string('opengraph_settings', 'block_yammer'));
+        // The opengraph parameters.
+        // opengraph url.
+        $mform->addElement('text', 'config_ogurl', get_string('ogurl', 'block_yammer'));
+        $mform->addHelpButton('config_ogurl', 'ogurl', 'block_yammer');
+        $mform->disabledIf('config_ogurl', 'config_feedtype', 'neq', 'open-graph');
+        $mform->setType('config_ogurl', PARAM_URL);
+        // The opengraph object type.
+        $ogtypes = array(
+            'page'  => 'Page',
+            'audio'  => 'Audio',
+            'department'  => 'Department',
+            'document'  => 'Document',
+            'file'  => 'File',
+            'folder'  => 'Folder',
+            'image'  => 'Image',
+            'person'  => 'Person',
+            'place'  => 'Place',
+            'project'  => 'Project',
+            'team'  => 'Team',
+            'video'  => 'Video',
+        );
+        $mform->addElement('select', 'config_ogtype', get_string('ogtype', 'block_yammer'), $ogtypes);
+        $mform->addHelpButton('config_ogtype', 'ogtype', 'block_yammer');
+        $mform->disabledIf('config_ogtype', 'config_feedtype', 'neq', 'open-graph');
+        $mform->setType('config_feedtype', PARAM_TEXT);
+        // Show or hide open graph preview.
+        $mform->addElement('advcheckbox', 'config_hideogpreview', get_string('hideogpreview', 'block_yammer'),
+            get_string('hideogpreview_desc', 'block_yammer'));
+        $mform->addHelpButton('config_hideogpreview', 'hideogpreview', 'block_yammer');
+        $mform->disabledIf('config_hideogpreview', 'config_feedtype', 'neq', 'open-graph');
+        $mform->setType('config_hideogpreview', PARAM_BOOL);
+
+        // Feed display settings.
         $mform->addElement('header', 'config_feed', get_string('feed_settings', 'block_yammer'));
         // Custom publisher message.
         $mform->addElement('text', 'config_prompttext', get_string('prompttext', 'block_yammer'));
@@ -85,12 +124,6 @@ class block_yammer_edit_form extends block_edit_form {
         $mform->addElement('advcheckbox', 'config_hidefooter', get_string('hidefooter', 'block_yammer'),
             get_string('hidefooter_desc', 'block_yammer'));
         $mform->setType('config_hidefooter', PARAM_BOOL);
-        // Show or hide open graph preview.
-        $mform->addElement('advcheckbox', 'config_hideogpreview', get_string('hideogpreview', 'block_yammer'),
-            get_string('hideogpreview_desc', 'block_yammer'));
-        $mform->addHelpButton('config_hideogpreview', 'hideogpreview', 'block_yammer');
-        $mform->disabledIf('config_hideogpreview', 'config_feedtype', 'neq', 'open-graph');
-        $mform->setType('config_hideogpreview', PARAM_BOOL);
         // Clean form inputs.
         $mform->applyFilter('__ALL__', 'trim');
     }

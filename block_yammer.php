@@ -50,50 +50,49 @@ class block_yammer extends block_base {
             return $this->content;
         }
 
-        // Get the yammer embed script source url from the global config.
-        $this->config->scriptsource = get_config('yammer', 'scriptsource');
-
         // Get config settings for script.
+        // Yammer network settings.
         $params = array(
             'container' => '#embedded-feed',
             'network' => $this->config->network,
             'config' => array(),
         );
-        if (!empty($this->config->feedtype) && $this->config->feedtype !== 'my') {
-            // The "my" feed doesn't use the feedType parameter.
+        // The "my" feed doesn't use the feedType parameter.
+        if ($this->config->feedtype !== 'my') {
             $params['feedType'] = $this->config->feedtype;
         }
         if (!empty($this->config->feedid)) {
             $params['feedId'] = $this->config->feedid;
         }
-        if (!empty($this->config->ogurl)) {
-            $params['objectProperties'] = array('url' => $this->config->ogurl, 'type' => 'page');
-            if (!empty($this->config->hideogpreview)) {
-                $params['config']['showOpenGraphPreview'] = 'false';
-            } else {
-                $params['config']['showOpenGraphPreview'] = 'true';
-            }
-        }
         if (!empty($this->config->defaultgroupid)) {
             $params['config']['defaultGroupId'] = $this->config->defaultgroupid;
         }
-        if (!empty($this->config->usesso)) {
-            $params['config']['use_sso'] = 'true';
+        $params['config']['defaultToCanonical'] = (bool) $this->config->defaulttocanonical;
+        $params['config']['use_sso'] = (bool) $this->config->usesso;
+
+        // Open graph settings.
+        if ($this->config->feedtype === 'open-graph') {
+            $params['objectProperties'] = array(
+                'url' => $this->config->ogurl,
+                'page' => $this->config->ogtype,
+            );
+            $params['config']['showOpenGraphPreview'] = (bool) $this->config->hideogpreview;
         }
-        if (!empty($this->config->hideheader)) {
-            $params['config']['header'] = 'false';
-        }
-        if (!empty($this->config->hidefooter)) {
-            $params['config']['footer'] = 'false';
-        }
+
+        // Feed display settings.
         if (!empty($this->config->prompttext)) {
             $params['config']['promptText'] = $this->config->prompttext;
         }
+        $params['config']['header'] = (bool) $this->config->hideheader;
+        $params['config']['footer'] = (bool) $this->config->hidefooter;
+
+        // Encode the parameters for the yammer javascript to use.
+        $params = json_encode($params, JSON_PRETTY_PRINT);
 
         $this->content->text = html_writer::tag('div', '', array('id' => 'embedded-feed'));
         $this->content->text .= html_writer::tag('script', '',
-            array('type' => 'text/javascript', 'src' => $this->config->scriptsource));
-        $this->content->text .= html_writer::tag('script', 'yam.connect.embedFeed(' . json_encode($params) . ');');
+            array('type' => 'text/javascript', 'src' => get_config('yammer', 'scriptsource')));
+        $this->content->text .= html_writer::tag('script', "yam.connect.embedFeed({$params});");
 
         return $this->content;
     }
