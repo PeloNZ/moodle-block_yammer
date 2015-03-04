@@ -45,7 +45,7 @@ class block_yammer extends block_base {
 
         $this->content = new stdClass();
 
-        if (empty($this->config)) {
+        if (empty($this->config->feedtype)) {
             $this->content->text = get_string('notconfigured', 'block_yammer');
             return $this->content;
         }
@@ -83,8 +83,8 @@ class block_yammer extends block_base {
         if (!empty($this->config->prompttext)) {
             $params['config']['promptText'] = $this->config->prompttext;
         }
-        $params['config']['header'] = (bool) $this->config->hideheader;
-        $params['config']['footer'] = (bool) $this->config->hidefooter;
+        $params['config']['header'] = (bool) $this->config->showheader;
+        $params['config']['footer'] = (bool) $this->config->showfooter;
 
         // Encode the parameters for the yammer javascript to use.
         $params = json_encode($params, JSON_PRETTY_PRINT);

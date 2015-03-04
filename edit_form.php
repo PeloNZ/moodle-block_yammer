@@ -67,6 +67,7 @@ class block_yammer_edit_form extends block_edit_form {
         $mform->addElement('advcheckbox', 'config_defaulttocanonical', get_string('defaulttocanonical', 'block_yammer'),
             get_string('defaulttocanonical_desc', 'block_yammer'));
         $mform->addHelpButton('config_defaulttocanonical', 'defaulttocanonical', 'block_yammer');
+        $mform->setDefault('config_defaulttocanonical', 1);
         $mform->setType('config_defaulttocanonical', PARAM_BOOL);
         // Enable single sign on (SSO).
         $mform->addElement('advcheckbox', 'config_usesso', get_string('usesso', 'block_yammer'),
@@ -116,14 +117,16 @@ class block_yammer_edit_form extends block_edit_form {
         $mform->addElement('text', 'config_prompttext', get_string('prompttext', 'block_yammer'));
         $mform->addHelpButton('config_prompttext', 'prompttext', 'block_yammer');
         $mform->setType('config_prompttext', PARAM_TEXT);
-        // Show or hide header.
-        $mform->addElement('advcheckbox', 'config_hideheader', get_string('hideheader', 'block_yammer'),
-            get_string('hideheader_desc', 'block_yammer'));
-        $mform->setType('config_hideheader', PARAM_BOOL);
+        // Show or show header.
+        $mform->addElement('advcheckbox', 'config_showheader', get_string('showheader', 'block_yammer'),
+            get_string('showheader_desc', 'block_yammer'));
+        $mform->setDefault('config_showheader', 1);
+        $mform->setType('config_showheader', PARAM_BOOL);
         // Show or hide footer.
-        $mform->addElement('advcheckbox', 'config_hidefooter', get_string('hidefooter', 'block_yammer'),
-            get_string('hidefooter_desc', 'block_yammer'));
-        $mform->setType('config_hidefooter', PARAM_BOOL);
+        $mform->addElement('advcheckbox', 'config_showfooter', get_string('showfooter', 'block_yammer'),
+            get_string('showfooter_desc', 'block_yammer'));
+        $mform->setDefault('config_showfooter', 1);
+        $mform->setType('config_showfooter', PARAM_BOOL);
         // Clean form inputs.
         $mform->applyFilter('__ALL__', 'trim');
     }
