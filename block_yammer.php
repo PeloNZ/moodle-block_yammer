@@ -67,8 +67,8 @@ class block_yammer extends block_base {
         if (!empty($this->config->defaultgroupid)) {
             $params['config']['defaultGroupId'] = $this->config->defaultgroupid;
         }
-        $params['config']['defaultToCanonical'] = (bool) $this->config->defaulttocanonical;
-        $params['config']['use_sso'] = (bool) $this->config->usesso;
+        $params['config']['defaultToCanonical'] = isset($this->config->defaulttocanonical) ? (bool) $this->config->defaulttocanonical : false;
+        $params['config']['use_sso'] = isset($this->config->usesso) ? (bool) $this->config->usesso : false;
 
         // Open graph settings.
         if ($this->config->feedtype === 'open-graph') {
@@ -76,15 +76,15 @@ class block_yammer extends block_base {
                 'url' => $this->config->ogurl,
                 'page' => $this->config->ogtype,
             );
-            $params['config']['showOpenGraphPreview'] = (bool) $this->config->hideogpreview;
+            $params['config']['showOpenGraphPreview'] = isset($this->config->showogpreview) ? (bool) $this->config->showogpreview : false;
         }
 
         // Feed display settings.
         if (!empty($this->config->prompttext)) {
             $params['config']['promptText'] = $this->config->prompttext;
         }
-        $params['config']['header'] = (bool) $this->config->showheader;
-        $params['config']['footer'] = (bool) $this->config->showfooter;
+        $params['config']['header'] = isset($this->config->showheader) ? (bool) $this->config->showheader : false;
+        $params['config']['footer'] = isset($this->config->showfooter) ? (bool) $this->config->showfooter : false;
 
         // Encode the parameters for the yammer javascript to use.
         $params = json_encode($params, JSON_PRETTY_PRINT);
