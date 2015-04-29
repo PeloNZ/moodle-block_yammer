@@ -74,7 +74,10 @@ class block_yammer extends block_base {
         if ($this->config->feedtype === 'open-graph') {
             $params['objectProperties'] = array(
                 'url' => $this->config->ogurl,
-                'page' => $this->config->ogtype,
+                'type' => $this->config->ogtype,
+                'fetch' => isset($this->config->fetch) ? (bool) $this->config->fetch : false,
+                'private' => isset($this->config->private) ? (bool) $this->config->private : false,
+                'ignore_canonical_url' => isset($this->config->ignore_canonical_url) ? (bool) $this->config->ignore_canonical_url : false,
             );
             $params['config']['showOpenGraphPreview'] = isset($this->config->showogpreview) ? (bool) $this->config->showogpreview : false;
         }
@@ -84,6 +87,7 @@ class block_yammer extends block_base {
             $params['config']['promptText'] = $this->config->prompttext;
         }
         $params['config']['header'] = isset($this->config->showheader) ? (bool) $this->config->showheader : false;
+        $params['config']['hideNetworkName'] = isset($this->config->hideNetworkName) ? (bool) $this->config->hideNetworkName : false;
         $params['config']['footer'] = isset($this->config->showfooter) ? (bool) $this->config->showfooter : false;
 
         // Encode the parameters for the yammer javascript to use.
@@ -106,6 +110,9 @@ class block_yammer extends block_base {
     }
 
     public function specialization() {
+        if (!isset($this->config)) {
+            $this->config = new stdClass();
+        }
         // Set the block title.
         if (!empty($this->config->title)) {
             $this->title = $this->config->title;
@@ -114,9 +121,6 @@ class block_yammer extends block_base {
         }
         // Set the default yammer network.
         if (empty($this->config->network)) {
-            if (!isset($this->config)) {
-                $this->config = new stdClass();
-            }
             $this->config->network = get_config('yammer', 'defaultnetwork');
         }
     }

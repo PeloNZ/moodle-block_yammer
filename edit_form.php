@@ -110,7 +110,24 @@ class block_yammer_edit_form extends block_edit_form {
         $mform->addHelpButton('config_showogpreview', 'showogpreview', 'block_yammer');
         $mform->disabledIf('config_showogpreview', 'config_feedtype', 'neq', 'open-graph');
         $mform->setType('config_showogpreview', PARAM_BOOL);
-
+        // Fetch metadata.
+        $mform->addElement('advcheckbox', 'config_fetch', get_string('fetch', 'block_yammer'),
+            get_string('fetch_desc', 'block_yammer'));
+        $mform->addHelpButton('config_fetch', 'fetch', 'block_yammer');
+        $mform->disabledIf('config_fetch', 'config_feedtype', 'neq', 'open-graph');
+        $mform->setType('config_fetch', PARAM_BOOL);
+        // Mark as private.
+        $mform->addElement('advcheckbox', 'config_private', get_string('private', 'block_yammer'),
+            get_string('private_desc', 'block_yammer'));
+        $mform->addHelpButton('config_private', 'private', 'block_yammer');
+        $mform->disabledIf('config_private', 'config_feedtype', 'neq', 'open-graph');
+        $mform->setType('config_private', PARAM_BOOL);
+        // Ignore_canonical_url.
+        $mform->addElement('advcheckbox', 'config_ignore_canonical_url', get_string('ignore_canonical_url', 'block_yammer'),
+            get_string('ignore_canonical_url_desc', 'block_yammer'));
+        $mform->addHelpButton('config_ignore_canonical_url', 'ignore_canonical_url', 'block_yammer');
+        $mform->disabledIf('config_ignore_canonical_url', 'config_feedtype', 'neq', 'open-graph');
+        $mform->setType('config_ignore_canonical_url', PARAM_BOOL);
         // Feed display settings.
         $mform->addElement('header', 'config_feed', get_string('feed_settings', 'block_yammer'));
         // Custom publisher message.
@@ -122,6 +139,11 @@ class block_yammer_edit_form extends block_edit_form {
             get_string('showheader_desc', 'block_yammer'));
         $mform->setDefault('config_showheader', 1);
         $mform->setType('config_showheader', PARAM_BOOL);
+        // Hide network name.
+        $mform->addElement('advcheckbox', 'config_hideNetworkName', get_string('hideNetworkName', 'block_yammer'),
+            get_string('hideNetworkName_desc', 'block_yammer'));
+        $mform->setDefault('config_hideNetworkName', 0);
+        $mform->setType('config_hideNetworkName', PARAM_BOOL);
         // Show or hide footer.
         $mform->addElement('advcheckbox', 'config_showfooter', get_string('showfooter', 'block_yammer'),
             get_string('showfooter_desc', 'block_yammer'));

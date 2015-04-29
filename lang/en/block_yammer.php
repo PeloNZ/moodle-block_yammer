@@ -57,6 +57,15 @@ $string['ogtype_help'] = 'Select the OpenGraph object type.';
 $string['ogurl'] = 'Open Graph URL';
 $string['ogurl_help'] = 'If the feed type is <em>open-graph</em>, the feed URL must be specified.';
 $string['opengraph_settings'] = 'OpenGraph settings';
+$string['private'] = 'Mark as private';
+$string['private_desc'] = 'Mark the OpenGraph object as private';
+$string['private_help'] = 'Mark as private';
+$string['fetch'] = 'Fetch metadata';
+$string['fetch_desc'] = 'Fetch OpenGraph object metadata';
+$string['fetch_help'] = 'Fetch OpenGraph object metadata';
+$string['ignore_canonical_url'] = 'Ignore canonical URL';
+$string['ignore_canonical_url_desc'] = 'Ignore the OpenGraph object canonical URL';
+$string['ignore_canonical_url_help'] = 'Ignore canonical URL';
 
 // Feed display settings.
 $string['feed_settings'] = 'Feed display settings';
@@ -71,6 +80,8 @@ $string['prompttext'] = 'Prompt Text';
 $string['prompttext_help'] = 'You can encourage your users to post more by providing custom publisher watermark text.';
 $string['width'] = 'Width';
 $string['width_help'] = 'Set the width of the feed in pixels (px). This may be over-ridden by the theme or the block placement.';
+$string['hideNetworkName'] = 'Hide network in header';
+$string['hideNetworkName_desc'] = 'Hide network name in the header.';
 
 // Global settings.
 $string['defaultnetwork'] = 'Default network';
