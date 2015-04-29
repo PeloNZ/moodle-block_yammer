@@ -105,11 +105,11 @@ class block_yammer_edit_form extends block_edit_form {
         $mform->disabledIf('config_ogtype', 'config_feedtype', 'neq', 'open-graph');
         $mform->setType('config_feedtype', PARAM_TEXT);
         // Show or hide open graph preview.
-        $mform->addElement('advcheckbox', 'config_hideogpreview', get_string('hideogpreview', 'block_yammer'),
-            get_string('hideogpreview_desc', 'block_yammer'));
-        $mform->addHelpButton('config_hideogpreview', 'hideogpreview', 'block_yammer');
-        $mform->disabledIf('config_hideogpreview', 'config_feedtype', 'neq', 'open-graph');
-        $mform->setType('config_hideogpreview', PARAM_BOOL);
+        $mform->addElement('advcheckbox', 'config_showogpreview', get_string('showogpreview', 'block_yammer'),
+            get_string('showogpreview_desc', 'block_yammer'));
+        $mform->addHelpButton('config_showogpreview', 'showogpreview', 'block_yammer');
+        $mform->disabledIf('config_showogpreview', 'config_feedtype', 'neq', 'open-graph');
+        $mform->setType('config_showogpreview', PARAM_BOOL);
 
         // Feed display settings.
         $mform->addElement('header', 'config_feed', get_string('feed_settings', 'block_yammer'));

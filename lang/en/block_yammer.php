@@ -49,9 +49,9 @@ $string['usesso_help'] = 'The newest version of Yammer Embed (released April 201
 $string['yammer_settings'] = 'Yammer network settings';
 
 // Open graph settings.
-$string['hideogpreview'] = 'Hide OG preview';
-$string['hideogpreview_desc'] = 'Hide open graph object preview.';
-$string['hideogpreview_help'] = 'Display an Open Graph preview of the target URL beneath the new message publisher, which provides users with a preview of the Open Graph summary they will see in the conversation they are starting.';
+$string['showogpreview'] = 'Show OG preview';
+$string['showogpreview_desc'] = 'Show open graph object preview.';
+$string['showogpreview_help'] = 'Display an Open Graph preview of the target URL beneath the new message publisher, which provides users with a preview of the Open Graph summary they will see in the conversation they are starting.';
 $string['ogtype'] = 'OpenGraph type';
 $string['ogtype_help'] = 'Select the OpenGraph object type.';
 $string['ogurl'] = 'Open Graph URL';
