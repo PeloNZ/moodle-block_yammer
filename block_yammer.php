@@ -69,28 +69,28 @@ class block_yammer extends block_base {
         if (!empty($this->config->defaultgroupid)) {
             $params['config']['defaultGroupId'] = $this->config->defaultgroupid;
         }
-        $params['config']['defaultToCanonical'] = isset($this->config->defaulttocanonical) ? (bool) $this->config->defaulttocanonical : false;
-        $params['config']['use_sso'] = isset($this->config->usesso) ? (bool) $this->config->usesso : false;
+        $params['config']['defaultToCanonical'] = $this->get_setting('defaulttocanonical');
+        $params['config']['use_sso'] = $this->get_setting('usesso');
 
         // Open graph settings.
         if ($this->config->feedtype === 'open-graph') {
             $params['objectProperties'] = array(
                 'url' => $this->config->ogurl,
                 'type' => $this->config->ogtype,
-                'fetch' => isset($this->config->fetch) ? (bool) $this->config->fetch : false,
-                'private' => isset($this->config->private) ? (bool) $this->config->private : false,
-                'ignore_canonical_url' => isset($this->config->ignore_canonical_url) ? (bool) $this->config->ignore_canonical_url : false,
+                'fetch' => $this->get_setting('fetch'),
+                'private' => $this->get_setting('private'),
+                'ignore_canonical_url' => $this->get_setting('ignore_canonical_url'),
             );
-            $params['config']['showOpenGraphPreview'] = isset($this->config->showogpreview) ? (bool) $this->config->showogpreview : false;
+            $params['config']['showOpenGraphPreview'] = $this->get_setting('showogpreview');
         }
 
         // Feed display settings.
         if (!empty($this->config->prompttext)) {
             $params['config']['promptText'] = $this->config->prompttext;
         }
-        $params['config']['header'] = isset($this->config->showheader) ? (bool) $this->config->showheader : false;
-        $params['config']['hideNetworkName'] = isset($this->config->hideNetworkName) ? (bool) $this->config->hideNetworkName : false;
-        $params['config']['footer'] = isset($this->config->showfooter) ? (bool) $this->config->showfooter : false;
+        $params['config']['header'] = $this->get_setting('showheader');
+        $params['config']['hideNetworkName'] = $this->get_setting('hideNetworkName');
+        $params['config']['footer'] = $this->get_setting('showfooter');
 
         // Encode the parameters for the yammer javascript to use.
         $params = json_encode($params, JSON_PRETTY_PRINT);
@@ -125,6 +125,16 @@ class block_yammer extends block_base {
         if (empty($this->config->network)) {
             $this->config->network = get_config('yammer', 'defaultnetwork');
         }
+    }
+
+    /**
+     * Shortcut function to retrieve checkbox type config settings.
+     *
+     * @param string the setting to check
+     * @return bool
+     */
+    private function get_setting($setting) {
+        return isset($this->config->$setting) ? (bool) $this->config->$setting : false;
     }
 }
 
