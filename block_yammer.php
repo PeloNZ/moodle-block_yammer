@@ -51,6 +51,8 @@ class block_yammer extends block_base {
         }
 
         // Get config settings for script.
+        $scriptsource = get_config('yammer', 'scriptsource');
+
         // Yammer network settings.
         $params = array(
             'container' => '#embedded-feed',
@@ -95,7 +97,7 @@ class block_yammer extends block_base {
 
         $this->content->text = html_writer::tag('div', '', array('id' => 'embedded-feed'));
         $this->content->text .= html_writer::tag('script', '',
-            array('type' => 'text/javascript', 'src' => get_config('yammer', 'scriptsource')));
+            array('type' => 'text/javascript', 'src' => $scriptsource));
         $this->content->text .= html_writer::tag('script', "yam.connect.embedFeed({$params});");
 
         return $this->content;
