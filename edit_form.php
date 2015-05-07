@@ -63,7 +63,7 @@ class block_yammer_edit_form extends block_edit_form {
         $mform->addRule('config_defaultgroupid', get_string('err_numeric', 'form'), 'numeric', '', 'client');
         $mform->disabledIf('config_defaultgroupid', 'config_feedtype', 'neq', 'group');
         $mform->setType('config_defaultgroupid', PARAM_TEXT);
-        // Default to canonical network
+        // Default to canonical network.
         $mform->addElement('advcheckbox', 'config_defaulttocanonical', get_string('defaulttocanonical', 'block_yammer'),
             get_string('defaulttocanonical_desc', 'block_yammer'));
         $mform->addHelpButton('config_defaulttocanonical', 'defaulttocanonical', 'block_yammer');
