@@ -17,26 +17,49 @@
 /**
  * Version details
  *
- * @package    block
- * @subpackage yammer
+ * @package    block_yammer
  * @copyright  2014 Catalyst EU
  * @author     Chris Wharton <chris.wharton@catalyst-eu.net>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+/**
+ * The block_yammer class definition.
+ */
 class block_yammer extends block_base {
+
+    /**
+     * Class constructor.
+     *
+     * @return void
+     */
     public function init() {
         $this->title = get_string('pluginname', 'block_yammer');
     }
 
+    /**
+     * Which page types this block may appear on.
+     *
+     * @return array
+     */
     public function applicable_formats() {
         return array('course-view' => true);
     }
 
+    /**
+     * Return true if the block has a settings.php file.
+     *
+     * @return bool
+     */
     public function has_config() {
         return true;
     }
 
+    /*
+     * Get the block content.
+     *
+     * @return stdObject
+     */
     public function get_content() {
 
         if ($this->content !== null) {
@@ -103,14 +126,29 @@ class block_yammer extends block_base {
         return $this->content;
     }
 
+    /**
+     * Hide the block header.
+     *
+     * @return bool
+     */
     public function hide_header() {
         return false;
     }
 
+    /**
+     * Allow multiple instances of block.
+     *
+     * @return bool
+     */
     public function instance_allow_multiple() {
         return false;
     }
 
+    /**
+     * Set the block title and config parameters before display.
+     *
+     * @return void
+     */
     public function specialization() {
         if (!isset($this->config)) {
             $this->config = new stdClass();
@@ -130,7 +168,7 @@ class block_yammer extends block_base {
     /**
      * Shortcut function to retrieve checkbox type config settings.
      *
-     * @param string the setting to check
+     * @param string $setting The setting to check.
      * @return bool
      */
     private function get_setting($setting) {

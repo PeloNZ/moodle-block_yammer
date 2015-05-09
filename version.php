@@ -17,8 +17,7 @@
 /**
  * Version details
  *
- * @package    block
- * @subpackage yammer
+ * @package    block_yammer
  * @copyright  2014 Catalyst EU
  * @author     Chris Wharton <chris.wharton@catalyst-eu.net>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -26,8 +25,8 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2015021800;        // The current plugin version (Date: YYYYMMDDXX)
+$plugin->version   = 2015050900;        // The current plugin version (Date: YYYYMMDDXX)
 $plugin->requires  = 2013050100;        // Requires this Moodle version
 $plugin->component = 'block_yammer'; // Full name of the plugin (used for diagnostics).
 $plugin->maturity = MATURITY_STABLE;
-$plugin->release = 'v0.2';
+$plugin->release = 'v0.3';

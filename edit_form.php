@@ -23,8 +23,17 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+/**
+ * The form to edit block instance configuration.
+ */
 class block_yammer_edit_form extends block_edit_form {
 
+    /**
+     * Define form fields specific to this block.
+     *
+     * @param object $mform the form being built.
+     * @return void
+     */
     protected function specific_definition($mform) {
 
         // Section header title according to language file.
@@ -153,6 +162,13 @@ class block_yammer_edit_form extends block_edit_form {
         $mform->applyFilter('__ALL__', 'trim');
     }
 
+    /**
+     * Validate the submitted form data.
+     *
+     * @param array $data array of submitted data.
+     * @param array $files array of uploaded files.
+     * @return array
+     */
     public function validation($data, $files) {
         $errors = array();
 

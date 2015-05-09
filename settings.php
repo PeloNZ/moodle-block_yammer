@@ -17,8 +17,7 @@
 /**
  * Version details
  *
- * @package    block
- * @subpackage yammer
+ * @package    block_yammer
  * @copyright  2014 Catalyst EU
  * @author     Chris Wharton <chris.wharton@catalyst-eu.net>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
