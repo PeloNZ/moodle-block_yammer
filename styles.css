@@ -1,7 +1,7 @@
-#embedded-feed {
+div.block_yammer #embedded-feed {
     height: 500px;
 }
 
-#embedded-feed .videoWrapper {
+div.block_yammer #embedded-feed .videoWrapper {
     height: 100%;
 }

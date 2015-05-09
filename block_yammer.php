@@ -95,7 +95,7 @@ class block_yammer extends block_base {
         // Encode the parameters for the yammer javascript to use.
         $params = json_encode($params, JSON_PRETTY_PRINT);
 
-        $this->content->text = html_writer::tag('div', '', array('id' => 'embedded-feed'));
+        $this->content->text = html_writer::tag('div', '', array('class' => 'block_yammer', 'id' => 'embedded-feed'));
         $this->content->text .= html_writer::tag('script', '',
             array('type' => 'text/javascript', 'src' => $scriptsource));
         $this->content->text .= html_writer::tag('script', "yam.connect.embedFeed({$params});");
