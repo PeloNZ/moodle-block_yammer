@@ -43,7 +43,7 @@ class block_yammer extends block_base {
      * @return array
      */
     public function applicable_formats() {
-        return array('course-view' => true);
+        return array('all' => true);
     }
 
     /**
