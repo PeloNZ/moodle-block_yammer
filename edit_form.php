@@ -91,18 +91,18 @@ class block_yammer_edit_form extends block_edit_form {
         $mform->setType('config_ogurl', PARAM_URL);
         // The opengraph object type.
         $ogtypes = array(
-            'page'  => 'Page',
-            'audio'  => 'Audio',
-            'department'  => 'Department',
-            'document'  => 'Document',
-            'file'  => 'File',
-            'folder'  => 'Folder',
-            'image'  => 'Image',
-            'person'  => 'Person',
-            'place'  => 'Place',
-            'project'  => 'Project',
-            'team'  => 'Team',
-            'video'  => 'Video',
+            'audio'  => new lang_string('og-audio', 'block_yammer'),
+            'department'  => new lang_string('og-department', 'block_yammer'),
+            'document'  => new lang_string('og-document', 'block_yammer'),
+            'file'  => new lang_string('og-file', 'block_yammer'),
+            'folder'  => new lang_string('og-file', 'block_yammer'),
+            'image'  => new lang_string('og-image', 'block_yammer'),
+            'page'  => new lang_string('og-page', 'block_yammer'),
+            'person'  => new lang_string('og-person', 'block_yammer'),
+            'place'  => new lang_string('og-place', 'block_yammer'),
+            'project'  => new lang_string('og-project', 'block_yammer'),
+            'team'  => new lang_string('og-team', 'block_yammer'),
+            'video'  => new lang_string('og-video', 'block_yammer'),
         );
         $mform->addElement('select', 'config_ogtype', get_string('ogtype', 'block_yammer'), $ogtypes);
         $mform->addHelpButton('config_ogtype', 'ogtype', 'block_yammer');
