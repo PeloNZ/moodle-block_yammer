@@ -38,15 +38,6 @@ class block_yammer extends block_base {
     }
 
     /**
-     * Which page types this block may appear on.
-     *
-     * @return array
-     */
-    public function applicable_formats() {
-        return array('course-view' => true);
-    }
-
-    /**
      * Return true if the block has a settings.php file.
      *
      * @return bool
