@@ -93,7 +93,6 @@ class block_yammer extends block_base {
             $params['config']['defaultGroupId'] = $this->config->defaultgroupid;
         }
         $params['config']['defaultToCanonical'] = $this->get_setting('defaulttocanonical');
-        $params['config']['use_sso'] = $this->get_setting('usesso');
 
         // Open graph settings.
         if ($this->config->feedtype === 'open-graph') {

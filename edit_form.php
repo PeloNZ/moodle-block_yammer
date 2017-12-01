@@ -78,11 +78,6 @@ class block_yammer_edit_form extends block_edit_form {
         $mform->addHelpButton('config_defaulttocanonical', 'defaulttocanonical', 'block_yammer');
         $mform->setDefault('config_defaulttocanonical', 1);
         $mform->setType('config_defaulttocanonical', PARAM_BOOL);
-        // Enable single sign on (SSO).
-        $mform->addElement('advcheckbox', 'config_usesso', get_string('usesso', 'block_yammer'),
-            get_string('usesso_desc', 'block_yammer'));
-        $mform->addHelpButton('config_usesso', 'usesso', 'block_yammer');
-        $mform->setType('config_usesso', PARAM_BOOL);
         // Where to get the parameters from.
         $mform->addElement('static', 'description', '', get_string('config_help', 'block_yammer'));
 

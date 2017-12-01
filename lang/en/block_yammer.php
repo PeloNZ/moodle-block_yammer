@@ -43,9 +43,6 @@ $string['feedtype'] = 'Feed Type';
 $string['feedtype_help'] = 'The type of feed to display.This can be <em>my</em>, <em>group</em>, <em>topic</em>, <em>user</em>, or <em>open-graph</em>.';
 $string['network'] = 'Network permalink';
 $string['network_help'] = 'This is the name of your Network, e.g. yammer.com/<strong>my-company-name.net</strong>.';
-$string['usesso'] = 'Use SSO';
-$string['usesso_desc'] = 'Enable Single Sign On.';
-$string['usesso_help'] = 'The newest version of Yammer Embed (released April 2014) supports Single Sign-on if your organization has used it on your Yammer Enterprise account.';
 $string['yammer_settings'] = 'Yammer network settings';
 
 // Open graph settings.
