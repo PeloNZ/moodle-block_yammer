@@ -14,17 +14,15 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
+defined('MOODLE_INTERNAL') || die();
+
 /**
- * Version details
+ * The block_yammer class definition.
  *
  * @package    block_yammer
  * @copyright  2014 Catalyst EU
  * @author     Chris Wharton <chris.wharton@catalyst-eu.net>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
-
-/**
- * The block_yammer class definition.
  */
 class block_yammer extends block_base {
 
@@ -46,7 +44,7 @@ class block_yammer extends block_base {
         return true;
     }
 
-    /*
+    /**
      * Get the block content.
      *
      * @return stdObject
