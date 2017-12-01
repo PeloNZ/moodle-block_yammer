@@ -31,7 +31,7 @@ $string['pluginname'] = 'Yammer';
 $string['blocktitle'] = 'Block title';
 
 // Yammer network settings.
-$string['config_help'] = 'You can display My Feed, a Group Feed, a Topic Feed, a User Feed or an OG object feed. Users will need to log in to view the feed.  Additionally, the feed is restricted to users of the network specified.</br>To retrieve the feed ID and network permalink, please navigate to the feed in the <a href="https://www.yammer.com" target="_blank">Yammer web application</a> and copy it from the URL.</br>Detailed documentation for the embedded feed specifcation is available <a href="https://developer.yammer.com/connect/" target="_blank">here</a>.';
+$string['config_help'] = 'You can display My Feed, a Group Feed, a Topic Feed, a User Feed or an OG object feed. Users will need to log in to view the feed.  Additionally, the feed is restricted to users of the network specified.</br>To retrieve the feed ID and network permalink, please navigate to the feed in the <a href="https://www.yammer.com" target="_blank">Yammer web application</a> and copy it from the URL.</br>Detailed documentation for the embedded feed specifcation is available <a href="https://developer.yammer.com/docs/embed" target="_blank">here</a>.';
 $string['defaultgroupid'] = 'Default Group ID';
 $string['defaultgroupid_help'] = 'The default group ID to post to.';
 $string['defaulttocanonical'] = 'Default to Canonical Network';
